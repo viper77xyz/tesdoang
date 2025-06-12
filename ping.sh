@@ -20,9 +20,9 @@ messages=()
 failed=0
 for server in "${SERVER[@]}"
 do
-    result=$(ping -c 1 $SERVER)
+    result=$(httping -c 1 $SERVER)
     if [ $? -eq 0 ]; then
-        httping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
+        ping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
         messages+=("ping $SERVER 📈 $ping ms")
     else
         messages+=("Failed ❌")
