@@ -15,15 +15,15 @@ else
     exit 1
 fi
 # PING SERVER
-SERVER=("google.com")
+SERVER=("www.google.com")
 messages=()
 failed=0
 for server in "${SERVER[@]}"
 do
     result=$(ping -c 1 $SERVER)
     if [ $? -eq 0 ]; then
-        ping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
-        messages+=("ping google.com 📈 $ping ms")
+        httping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
+        messages+=("ping $SERVER 📈 $ping ms")
     else
         messages+=("Failed ❌")
         failed=$((failed_count + 1))
