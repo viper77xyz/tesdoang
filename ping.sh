@@ -15,7 +15,7 @@ else
     exit 1
 fi
 # PING SERVER
-SERVER=("www.google.com")
+SERVER=("www.nordvpn.com")
 messages=()
 failed=0
 for server in "${SERVER[@]}"
