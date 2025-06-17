@@ -20,7 +20,7 @@ messages=()
 failed=0
 for server in "${SERVER[@]}"
 do
-    result=$(httping -c 1 -i 5 $SERVER)
+    result=$(httping -c 1 -i 15 $SERVER)
     if [ $? -eq 0 ]; then
         ping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
         messages+=("ping $SERVER 📈 $ping ms")
