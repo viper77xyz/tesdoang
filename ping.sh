@@ -15,12 +15,12 @@ else
     exit 1
 fi
 # PING SERVER
-SERVER=("www.nordvpn.com")
+SERVER=("www.google.com")
 messages=()
 failed=0
 for server in "${SERVER[@]}"
 do
-    result=$(httping -c 1 $SERVER)
+    result=$(httping -c 60 -i 60 $SERVER)
     if [ $? -eq 0 ]; then
         ping=$(echo "$result" | awk -F'/' 'END {printf "%.0f", $5}')
         messages+=("ping $SERVER 📈 $ping ms")
